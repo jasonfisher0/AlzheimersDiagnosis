@@ -1,0 +1,58 @@
+---
+title: "Model"
+format: html
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r}
+#|label: setup
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(brms))
+suppressPackageStartupMessages(library(tidybayes))
+suppressPackageStartupMessages(library(gtsummary))
+suppressPackageStartupMessages(library(broom))
+```
+
+```{r}
+#|cache: true
+
+x <- read_csv("alzheimers_disease_data.csv")
+
+x <- x %>%
+  mutate(
+    ADL = if_else(ADL <= 5, "lowADL", "highADL"),    
+    Age = if_else(Age < 75, "below75", "above75"),
+    FunctionalAssessment = if_else(FunctionalAssessment < 5, "lowFA", "highFA")
+  )
+
+model <- brm(
+  formula = Diagnosis ~ Age + Gender + FunctionalAssessment + ADL + MemoryComplaints + BehavioralProblems,
+  data = x,
+  family = bernoulli(),
+  refresh = 0,
+  silent = 2,
+  seed = 9,)
+
+modelf <- fixef(model)
+modelf2 <- as.data.frame(modelf) %>%
+  rownames_to_column(var = "term") %>%
+  arrange(desc(abs(Estimate))) %>%
+  mutate(OddsRatio = exp(Estimate))
+
+print(modelf2)
+```
+P(Diagnosis) = β0 + β1 * Age + β2 * Gender + β3 * FunctionalAssessment + β4 * ADL + β5 * MemoryComplaints + β6 * BehavioralProblems
+```{r}
+#|label: model_summary
+
+tbl_regression(model, exponentiate = TRUE) %>%
+  as_gt() %>%
+  gt::tab_header(
+    title = "Model Summary",
+    subtitle = "Logistic Regression with brms"
+  )
+```
+

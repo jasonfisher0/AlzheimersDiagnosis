@@ -2,4 +2,11 @@
 title: "About"
 ---
 
-About this site
+My name is Jason Fisher, I'm a senior at Pearland High School.
+Email: jasonfisher2025@gmail.com
+Github: https://github.com/jasonfisher0
+
+My project examines factors that can be used to predict an Alzheimer's diagnosis in people aged 60-90.
+Repo: https://github.com/jasonfisher0/finalproj
+
+This project was created as a part of Kane's Data Science Bootcamp: https://bootcamp.davidkane.info/
