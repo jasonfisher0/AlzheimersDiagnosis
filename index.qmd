@@ -1,7 +1,112 @@
 ---
-title: "."
+title: "Home"
+execute: 
+  echo: false
+  message: false
+  warning: false
 ---
 
-This is a Quarto website.
+Some factors can predict Alzheimer's Disease with more accuracy than others. People with low Functional Assessment test scores, low Activities of Daily Living scores, memory complaints, and behavioral problems had the highest odds of predicting Alzheimer's. Using health data from 2149 patients ages 60-90, this project explores the most effective predictors of Alzheimer's disease as of now. The model predicts whether or not a person has an Alzheimer's diagnosis based on multiple physiological and psychological measures along with age and gender.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+
+
+
+```{r}
+#|label: setup
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(brms))
+suppressPackageStartupMessages(library(ggplot2))
+
+```
+
+
+```{r}
+#|cache: true
+
+x <- read_csv("alzheimers_disease_data.csv", show_col_types = FALSE)
+
+x <- x %>%
+  mutate(
+    ADL = if_else(ADL <= 5, "lowADL", "highADL"),    
+    Age = if_else(Age < 75, "below75", "above75"),
+    FunctionalAssessment = if_else(FunctionalAssessment < 5, "lowFA", "highFA")
+  )
+
+model <- brm(
+  formula = Diagnosis ~ Age + Gender + FunctionalAssessment + ADL + MemoryComplaints + BehavioralProblems,
+  data = x,
+  family = bernoulli(),
+  refresh = 0,
+  silent = 2,
+  seed = 9
+)
+
+modelf <- fixef(model)
+modelf2 <- as.data.frame(modelf) %>%
+  rownames_to_column(var = "term") %>%
+  arrange(desc(abs(Estimate))) %>%
+  mutate(OddsRatio = exp(Estimate))
+
+ggplot(modelf2, aes(x = reorder(term, -abs(Estimate)), y = OddsRatio)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  geom_text(aes(label = round(OddsRatio, 2)), vjust = -0.5) +
+  labs(
+    title = "Odds Ratios of Model Coefficients",
+    x = "Predictor",
+    y = "Odds Ratio"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+
+library(tidyverse)
+library(brms)
+library(ggplot2)
+
+x <- read_csv("alzheimers_disease_data.csv")
+
+x <- x %>%
+  mutate(
+    ADL = if_else(ADL <= 5, "lowADL", "highADL"),    
+    Age = if_else(Age < 75, "below75", "above75"),
+    FunctionalAssessment = if_else(FunctionalAssessment < 5, "lowFA", "highFA")
+  )
+
+model <- brm(
+  formula = Diagnosis ~ Age + Gender + FunctionalAssessment + ADL + MemoryComplaints + BehavioralProblems,
+  data = x,
+  family = bernoulli(),
+  refresh = 0,
+  silent = 2,
+  seed = 9
+)
+
+modelf <- fixef(model)
+modelf2 <- as.data.frame(modelf) %>%
+  rownames_to_column(var = "term") %>%
+  arrange(desc(abs(Estimate))) %>%
+  mutate(OddsRatio = exp(Estimate),
+         CI_lower = exp(Q2.5),
+         CI_upper = exp(Q97.5),
+         label = sprintf("OR: %.2f\n95%% CI: %.2f - %.2f", OddsRatio, CI_lower, CI_upper))
+
+ggplot(modelf2, aes(x = reorder(term, Estimate), y = OddsRatio)) +
+  geom_point(size = 3, color = "blue") +
+  geom_errorbar(aes(ymin = CI_lower, ymax = CI_upper), width = 0.2, color = "blue") +
+  coord_flip() +
+  labs(
+    title = "Forest Plot of Model Coefficients",
+    x = "Predictor",
+    y = "Odds Ratio"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_text(aes(label = label, y = OddsRatio), hjust = -0.3, size = 3) +
+  scale_y_continuous(sec.axis = sec_axis(~ ., name = "Odds Ratios with 95% CI"))
+```
+

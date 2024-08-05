@@ -2,13 +2,13 @@ project:
   type: website
 
 website:
-  title: "."
+  title: "Alzheimer's Diagnosis"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
       - model.qmd
+      - about.qmd
 
 format:
   html:
