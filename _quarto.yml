@@ -5,9 +5,9 @@ website:
   title: "Alzheimer's Diagnosis Prediction"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - about.qmd
+      - href: index.qmd
+        text: Intro
       - model.qmd
 
 
