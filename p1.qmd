@@ -1,0 +1,49 @@
+---
+title: "p1"
+format: html
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r}
+#|label: setup
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(brms))
+suppressPackageStartupMessages(library(tidybayes))
+suppressPackageStartupMessages(library(gtsummary))
+suppressPackageStartupMessages(library(broom))
+```
+
+```{r}
+#|cache: true
+
+x <- read_csv("alzheimers_disease_data.csv")
+
+x <- x %>%
+  mutate(
+    ADL = if_else(ADL <= 5, "lowADL", "highADL"),    
+    Age = if_else(Age < 75, "below75", "above75"),
+    FunctionalAssessment = if_else(FunctionalAssessment < 5, "lowFA", "highFA")
+  )
+
+model <- brm(
+  formula = Diagnosis ~ Age + Gender + FunctionalAssessment + ADL + MemoryComplaints + BehavioralProblems,
+  data = x,
+  family = bernoulli(),
+  refresh = 0,
+  silent = 2,
+  seed = 9,)
+
+coefficients <- fixef(model)
+sorted_coefficients <- as.data.frame(coefficients) %>%
+  rownames_to_column(var = "term") %>%
+  arrange(desc(abs(Estimate)))
+
+print(sorted_coefficients)
+```
+
+Predictive for alzheimer's in 60-90 age group
+make binary for ethnic (0 for non asian, 1 for asian)
+Final result: distribution
