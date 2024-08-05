@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>. - logreg</title>
+<title>Alzheimer’s Diagnosis - delete</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">.</span>
+    <span class="navbar-title">Alzheimer’s Diagnosis</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -91,6 +91,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./model.html"> 
+<span class="menu-text">Model</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
@@ -115,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">logreg</h1>
+<h1 class="title">delete</h1>
 </div>
 
 
@@ -132,170 +136,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-glm(formula = Diagnosis ~ ., family = binomial, data = dataTrainTransformed)
-
-Coefficients:
-                           Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)               -0.809404   0.196790  -4.113  3.9e-05 ***
-Age                       -0.041982   0.076905  -0.546  0.58514    
-Gender1                   -0.168320   0.154856  -1.087  0.27706    
-Ethnicity1                -0.136977   0.196518  -0.697  0.48579    
-Ethnicity2                 0.087008   0.273389   0.318  0.75029    
-Ethnicity3                 0.030805   0.284522   0.108  0.91378    
-EducationLevel1           -0.343580   0.207583  -1.655  0.09790 .  
-EducationLevel2           -0.230910   0.219456  -1.052  0.29271    
-EducationLevel3           -0.291418   0.293478  -0.993  0.32072    
-BMI                       -0.090609   0.078093  -1.160  0.24594    
-Smoking                   -0.115948   0.078329  -1.480  0.13880    
-AlcoholConsumption        -0.066961   0.076755  -0.872  0.38299    
-PhysicalActivity          -0.030577   0.075725  -0.404  0.68636    
-DietQuality                0.006781   0.078319   0.087  0.93100    
-SleepQuality              -0.121661   0.077416  -1.572  0.11606    
-FamilyHistoryAlzheimers   -0.047747   0.077888  -0.613  0.53986    
-CardiovascularDisease      0.053628   0.075304   0.712  0.47637    
-Diabetes                  -0.038880   0.078561  -0.495  0.62067    
-Depression                 0.098640   0.075031   1.315  0.18862    
-HeadInjury                -0.081484   0.077274  -1.054  0.29166    
-Hypertension               0.074873   0.076595   0.978  0.32831    
-SystolicBP                 0.024289   0.076816   0.316  0.75185    
-DiastolicBP                0.059706   0.076295   0.783  0.43388    
-CholesterolTotal           0.112359   0.076540   1.468  0.14211    
-CholesterolLDL            -0.238566   0.079434  -3.003  0.00267 ** 
-CholesterolHDL             0.103140   0.077043   1.339  0.18065    
-CholesterolTriglycerides   0.071746   0.076981   0.932  0.35134    
-MMSE                      -0.864560   0.083738 -10.325  &lt; 2e-16 ***
-FunctionalAssessment      -1.291239   0.092570 -13.949  &lt; 2e-16 ***
-MemoryComplaints           1.028508   0.081147  12.675  &lt; 2e-16 ***
-BehavioralProblems         0.881537   0.080754  10.916  &lt; 2e-16 ***
-ADL                       -1.254711   0.092383 -13.582  &lt; 2e-16 ***
-Confusion                 -0.111996   0.079298  -1.412  0.15785    
-Disorientation            -0.061977   0.077746  -0.797  0.42535    
-PersonalityChanges         0.006184   0.079555   0.078  0.93804    
-DifficultyCompletingTasks  0.023256   0.078211   0.297  0.76620    
-Forgetfulness              0.059941   0.075916   0.790  0.42978    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 1955.2  on 1504  degrees of freedom
-Residual deviance: 1100.2  on 1468  degrees of freedom
-AIC: 1174.2
-
-Number of Fisher Scoring iterations: 6</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Confusion Matrix and Statistics
-
-          Reference
-Prediction   0   1
-         0 366  59
-         1  50 169
-                                          
-               Accuracy : 0.8307          
-                 95% CI : (0.7995, 0.8589)
-    No Information Rate : 0.646           
-    P-Value [Acc &gt; NIR] : &lt;2e-16          
-                                          
-                  Kappa : 0.6266          
-                                          
- Mcnemar's Test P-Value : 0.4435          
-                                          
-            Sensitivity : 0.8798          
-            Specificity : 0.7412          
-         Pos Pred Value : 0.8612          
-         Neg Pred Value : 0.7717          
-             Prevalence : 0.6460          
-         Detection Rate : 0.5683          
-   Detection Prevalence : 0.6599          
-      Balanced Accuracy : 0.8105          
-                                          
-       'Positive' Class : 0               
-                                          </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                            Feature  Coefficient OddsRatio
-FunctionalAssessment           FunctionalAssessment -1.291238608 0.2749300
-ADL                                             ADL -1.254710564 0.2851584
-MemoryComplaints                   MemoryComplaints  1.028507755 2.7968891
-BehavioralProblems               BehavioralProblems  0.881536740 2.4146075
-MMSE                                           MMSE -0.864559814 0.4212369
-(Intercept)                             (Intercept) -0.809403921 0.4451233
-EducationLevel1                     EducationLevel1 -0.343579573 0.7092270
-EducationLevel3                     EducationLevel3 -0.291418363 0.7472030
-CholesterolLDL                       CholesterolLDL -0.238566054 0.7877567
-EducationLevel2                     EducationLevel2 -0.230909960 0.7938109
-Gender1                                     Gender1 -0.168319953 0.8450834
-Ethnicity1                               Ethnicity1 -0.136976764 0.8719905
-SleepQuality                           SleepQuality -0.121661472 0.8854481
-Smoking                                     Smoking -0.115948183 0.8905214
-CholesterolTotal                   CholesterolTotal  0.112358710 1.1189142
-Confusion                                 Confusion -0.111995560 0.8940482
-CholesterolHDL                       CholesterolHDL  0.103140491 1.1086472
-Depression                               Depression  0.098640221 1.1036692
-BMI                                             BMI -0.090608890 0.9133749
-Ethnicity2                               Ethnicity2  0.087007843 1.0909052
-HeadInjury                               HeadInjury -0.081484491 0.9217470
-Hypertension                           Hypertension  0.074873439 1.0777477
-CholesterolTriglycerides   CholesterolTriglycerides  0.071746168 1.0743826
-AlcoholConsumption               AlcoholConsumption -0.066961136 0.9352315
-Disorientation                       Disorientation -0.061977006 0.9399045
-Forgetfulness                         Forgetfulness  0.059940749 1.0617736
-DiastolicBP                             DiastolicBP  0.059705956 1.0615244
-CardiovascularDisease         CardiovascularDisease  0.053628212 1.0550923
-FamilyHistoryAlzheimers     FamilyHistoryAlzheimers -0.047747340 0.9533746
-Age                                             Age -0.041982004 0.9588870
-Diabetes                                   Diabetes -0.038880061 0.9618661
-Ethnicity3                               Ethnicity3  0.030804881 1.0312843
-PhysicalActivity                   PhysicalActivity -0.030577418 0.9698853
-SystolicBP                               SystolicBP  0.024288868 1.0245862
-DifficultyCompletingTasks DifficultyCompletingTasks  0.023255938 1.0235285
-DietQuality                             DietQuality  0.006781331 1.0068044
-PersonalityChanges               PersonalityChanges  0.006184055 1.0062032
-                             X2.5..   X97.5.. AbsoluteCoefficient
-FunctionalAssessment      0.2282561 0.3282152         1.291238608
-ADL                       0.2368423 0.3403140         1.254710564
-MemoryComplaints          2.3930950 3.2903117         1.028507755
-BehavioralProblems        2.0670160 2.8376423         0.881536740
-MMSE                      0.3563914 0.4950002         0.864559814
-(Intercept)               0.3016184 0.6528381         0.809403921
-EducationLevel1           0.4717359 1.0651686         0.343579573
-EducationLevel3           0.4184494 1.3240390         0.291418363
-CholesterolLDL            0.6734529 0.9197351         0.238566054
-EducationLevel2           0.5159624 1.2206370         0.230909960
-Gender1                   0.6233937 1.1445099         0.168319953
-Ethnicity1                0.5917133 1.2793912         0.136976764
-SleepQuality              0.7605178 1.0304353         0.121661472
-Smoking                   0.7629515 1.0374582         0.115948183
-CholesterolTotal          0.9633370 1.3007546         0.112358710
-Confusion                 0.7643515 1.0433458         0.111995560
-CholesterolHDL            0.9533615 1.2898243         0.103140491
-Depression                0.9523783 1.2784162         0.098640221
-BMI                       0.7833321 1.0641811         0.090608890
-Ethnicity2                0.6360177 1.8597363         0.087007843
-HeadInjury                0.7907242 1.0709782         0.081484491
-Hypertension              0.9271012 1.2521855         0.074873439
-CholesterolTriglycerides  0.9240261 1.2498366         0.071746168
-AlcoholConsumption        0.8043181 1.0869547         0.066961136
-Disorientation            0.8058589 1.0933736         0.061977006
-Forgetfulness             0.9147120 1.2320853         0.059940749
-DiastolicBP               0.9141439 1.2331419         0.059705956
-CardiovascularDisease     0.9095203 1.2222741         0.053628212
-FamilyHistoryAlzheimers   0.8176532 1.1099336         0.047747340
-Age                       0.8243959 1.1147515         0.041982004
-Diabetes                  0.8232916 1.1206587         0.038880061
-Ethnicity3                0.5880885 1.7965427         0.030804881
-PhysicalActivity          0.8358586 1.1250155         0.030577418
-SystolicBP                0.8813121 1.1913003         0.024288868
-DifficultyCompletingTasks 0.8770642 1.1921580         0.023255938
-DietQuality               0.8634910 1.1741178         0.006781331
-PersonalityChanges        0.8599147 1.1750640         0.006184055</code></pre>
-</div>
-</div>
 
 
 
@@ -381,7 +221,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jasonfisher0\.github\.io\/finalproj\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
