@@ -5,10 +5,10 @@ website:
   title: "Alzheimer's Diagnosis Prediction"
   navbar:
     left:
-      - about.qmd
       - href: index.qmd
-        text: Intro
-      - model.qmd
+        text: Intro      
+      - model.qmd      
+      - about.qmd
 
 
 format:

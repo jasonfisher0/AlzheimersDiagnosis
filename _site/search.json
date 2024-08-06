@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Home",
+    "title": "Intro",
     "section": "",
-    "text": "Some factors can predict Alzheimer’s Disease with more accuracy than others. People with low Functional Assessment test scores, low Activities of Daily Living scores, memory complaints, and behavioral problems had the highest odds of predicting Alzheimer’s. Using health data from 2149 patients ages 60-90, this project explores the most effective predictors of Alzheimer’s disease as of now. The model predicts whether or not a person has an Alzheimer’s diagnosis based on multiple physiological and psychological measures along with age and gender."
+    "text": "Some factors can predict Alzheimer’s Disease with more accuracy than others. People with low Functional Assessment test scores, low Activities of Daily Living scores, memory complaints, and behavioral problems had the highest odds of predicting Alzheimer’s. Using health data from 2149 patients ages 60-90, this project explores the most effective predictors of Alzheimer’s disease as of now. It seems that physical functioning, rather than the expected cognitive functioning or age, has a greater odd of predicting Alzheimer’s disease in a person age 60-90."
   },
   {
     "objectID": "about.html",
