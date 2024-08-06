@@ -1,1 +1,1 @@
-# finalproj
+# Alzheimer's Diagnosis Prediction
