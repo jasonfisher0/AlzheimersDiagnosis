@@ -1,23 +1,30 @@
 [
   {
-    "objectID": "model.html",
-    "href": "model.html",
-    "title": "Model",
+    "objectID": "sources.html",
+    "href": "sources.html",
+    "title": "Sources",
     "section": "",
-    "text": "term   Estimate Est.Error       Q2.5      Q97.5\n1                 Intercept -4.7322152 0.2188493 -5.1668383 -4.3157662\n2 FunctionalAssessmentlowFA  2.7921408 0.1478759  2.5113680  3.0847212\n3                 ADLlowADL  2.6261555 0.1458926  2.3439582  2.9143138\n4          MemoryComplaints  2.6115390 0.1669588  2.2862275  2.9349857\n5        BehavioralProblems  2.4659710 0.1770945  2.1120971  2.8081667\n6                Agebelow75  0.1390725 0.1277643 -0.1131700  0.3862334\n7                    Gender -0.1284087 0.1283383 -0.3824212  0.1318146\n    OddsRatio\n1  0.00880694\n2 16.31591128\n3 13.82053436\n4 13.61999587\n5 11.77491061\n6  1.14920738\n7  0.87949388\n\n\nP(Diagnosis) = β0 + β1 * Age + β2 * Gender + β3 * FunctionalAssessment + β4 * ADL + β5 * MemoryComplaints + β6 * BehavioralProblems\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel Summary\n\n\nLogistic Regression with brms\n\n\nCharacteristic\nexp(Beta)\n95% CI\n1\n\n\n\n\nAge\n\n\n\n\n\n\n    Agebelow75\n1.15\n0.89, 1.47\n\n\nGender\n0.88\n0.68, 1.14\n\n\nFunctionalAssessment\n\n\n\n\n\n\n    FunctionalAssessmentlowFA\n16.3\n12.3, 21.9\n\n\nADL\n\n\n\n\n\n\n    ADLlowADL\n13.8\n10.4, 18.4\n\n\nMemoryComplaints\n13.6\n9.84, 18.8\n\n\nBehavioralProblems\n11.8\n8.27, 16.6\n\n\n\n1\nCI = Credible Interval"
+    "text": "I used the Alzheimer’s Disease Dataset from Kaggle.\nThere were no NA values in this dataset and it was not too large at 2,149 patients. For data cleaning, I selected 7 of the 35 columns that might be relevant in predicting an Alzheimer’s Diagnosis then mutated the continuous variables into binary ones to fit my Bernoulli model."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Home",
+    "title": "Intro",
     "section": "",
-    "text": "Some factors can predict Alzheimer’s Disease with more accuracy than others. People with low Functional Assessment test scores, low Activities of Daily Living scores, memory complaints, and behavioral problems had the highest odds of predicting Alzheimer’s. Using health data from 2149 patients ages 60-90, this project explores the most effective predictors of Alzheimer’s disease as of now. The model predicts whether or not a person has an Alzheimer’s diagnosis based on multiple physiological and psychological measures along with age and gender."
+    "text": "Some factors can predict Alzheimer’s Disease with more accuracy than others. People with low Functional Assessment test scores, low Activities of Daily Living scores, memory complaints, and behavioral problems had the highest odds of predicting Alzheimer’s. Using health data from 2149 patients ages 60-90, this project explores the most effective predictors of Alzheimer’s disease as of now. It seems that poor physical functioning, rather than the expected poor cognitive functioning or higher age, has a greater odd of predicting Alzheimer’s disease in a person age 60-90."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "My name is Jason Fisher, I’m a senior at Pearland High School. Email: jasonfisher2025@gmail.com Github: https://github.com/jasonfisher0\nMy project examines factors that can be used to predict an Alzheimer’s diagnosis in people aged 60-90. Repo: https://github.com/jasonfisher0/finalproj\nThis project was created as a part of Kane’s Data Science Bootcamp: https://bootcamp.davidkane.info/"
+    "text": "My name is Jason Fisher, and I’m a senior at Pearland High School. My project examines factors that can be used to predict an Alzheimer’s diagnosis in people aged 60-90. This project was created as a part of Kane’s Data Science Bootcamp\nMy GitHub Email"
+  },
+  {
+    "objectID": "model.html",
+    "href": "model.html",
+    "title": "Model",
+    "section": "",
+    "text": "\\[P(Diagnosis) + β_0 + β_1Age + β_2Gender + β_3FunctionalAssessment + β_4ADL +\\] \\[β_5MemoryComplaints + β_6BehavioralProblems\\]\nThe Odds Ratio is the exponentiated coefficient. An Odds Ratio of greater than 1 means the variable is associated with higher odds of the outcome, 1 means no association, and less than 1 means lower odds of the outcome.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel Summary\n\n\nLogistic Regression with brms\n\n\nTerm\nCoefficient\nOdds Ratios\nStandard Error\n2.5% CI\n97.5% CI\n\n\n\n\nIntercept\n-4.860\n0.008\n0.224\n-5.309\n-4.431\n\n\nAgebelow75\n0.136\n1.146\n0.127\n-0.116\n0.388\n\n\nGenderMale\n0.126\n1.134\n0.128\n-0.128\n0.372\n\n\nFunctionalAssessmentlowFA\n2.793\n16.327\n0.150\n2.502\n3.093\n\n\nADLlowADL\n2.627\n13.836\n0.147\n2.347\n2.915\n\n\nMemoryComplaints\n2.614\n13.648\n0.164\n2.294\n2.932\n\n\nBehavioralProblems\n2.471\n11.837\n0.187\n2.107\n2.832"
   }
 ]
